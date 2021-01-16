@@ -29,12 +29,12 @@
       var: thmbnails_results.stdout 
 
   - name: check apt-cache /var/cache/apt size
-    shell: du -sh /var/cache/apt | awk '{print $1}'
+    shell: du -sh /var/cache/apt | awk '{print $1}' | sed 's/M/''/g'
     register: du_results
 
   - name: debug /var/cache/apt size results
     debug:
-      var: du_results.stdout 
+      msg: "{{du_results.stdout}} megabytes size"
 
   - name: clean cache 
     shell: sudo apt-get clean -y
