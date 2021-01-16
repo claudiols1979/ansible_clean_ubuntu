@@ -4,7 +4,7 @@
   gather_facts: True
   tasks:
   - name: check disk size
-    shell: df -h
+    shell: df -h /dev/mapper/ubuntu--vg-ubuntu--lv
     register: disk_size
 
   - name: debug disk size
