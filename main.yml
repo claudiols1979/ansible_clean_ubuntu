@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: yes
+  set_facts: yes
+  tasks:
+  - name: check disk size
+    shell: df -h
+
+  - name: remove Unnecesary Packages and dependencies 
+    shell: apt-get autoremove --purge
+    register: autoremove_results
+
+  - name: clean Thumbnail cache
+    shell: rm -rf ~/.cache/thmbnails/*
+    ignore_errors: yes
+    register: thmbnails_results
+
+  - name: check apt-cache size
+    shell: du -sh /var/cache/apt | awk '{print $1}'
+    register: du_results
+
+  - name: clean cache 
+    shell: apt-get clean
+    register: cache_clean_results
+
+  
