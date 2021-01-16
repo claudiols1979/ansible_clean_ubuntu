@@ -7,11 +7,11 @@
     shell: df -h
 
   - name: remove Unnecesary Packages and dependencies 
-    shell: sudo apt-get autoremove --purge
+    shell: sudo apt-get autoremove --purge -y
     register: autoremove_results
 
   - name: clean Thumbnail cache
-    shell: sudo rm -rf ~/.cache/thmbnails/*
+    shell: sudo rm -rf ~/.cache/thmbnails/* 
     ignore_errors: yes
     register: thmbnails_results
 
@@ -20,7 +20,7 @@
     register: du_results
 
   - name: clean cache 
-    shell: sudo apt-get clean
+    shell: sudo apt-get clean -y
     register: cache_clean_results
 
   
