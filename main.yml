@@ -5,22 +5,41 @@
   tasks:
   - name: check disk size
     shell: df -h
+    register: disk_size
 
-  - name: remove Unnecesary Packages and dependencies 
+  - name: debug disk size
+    debug:
+      var: disk_size.stdout
+
+  - name: remove unnecesary packages and dependencies 
     shell: sudo apt-get autoremove --purge
     register: autoremove_results
+
+  - name: debug remove unnecesary packages
+    debug:
+      var" autoremove_results.stdout 
 
   - name: clean Thumbnail cache
     shell: sudo rm -rf ~/.cache/thmbnails/* 
     ignore_errors: yes
     register: thmbnails_results
 
+  - name: debug thumbnail cache clean
+    debug: 
+      var: thmbnails_results.stdout 
+
   - name: check apt-cache size
     shell: du -sh /var/cache/apt | awk '{print $1}'
     register: du_results
+
+  - name: debug du command results
+    debug:
+      var: du_results.stdout 
 
   - name: clean cache 
     shell: sudo apt-get clean -y
     register: cache_clean_results
 
-  
+  - name: debug clean cache 
+    debug:
+      var: cache_clean_results.stdout
