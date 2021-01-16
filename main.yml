@@ -17,7 +17,7 @@
 
   - name: debug remove unnecesary packages
     debug:
-      var" autoremove_results.stdout 
+      var: autoremove_results.stdout 
 
   - name: clean Thumbnail cache
     shell: sudo rm -rf ~/.cache/thmbnails/* 
