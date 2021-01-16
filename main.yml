@@ -32,7 +32,7 @@
     shell: du -sh /var/cache/apt | awk '{print $1}'
     register: du_results
 
-  - name: debug du command results
+  - name: debug /var/cache/apt size results
     debug:
       var: du_results.stdout 
 
