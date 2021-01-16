@@ -6,9 +6,9 @@
   - name: check disk size
     shell: df -h
 
-  # - name: remove Unnecesary Packages and dependencies 
-  #   shell: sudo apt-get autoremove --purge -y
-  #   register: autoremove_results
+  - name: remove Unnecesary Packages and dependencies 
+    shell: sudo apt-get autoremove --purge
+    register: autoremove_results
 
   - name: clean Thumbnail cache
     shell: sudo rm -rf ~/.cache/thmbnails/* 
