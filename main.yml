@@ -28,7 +28,7 @@
     debug: 
       var: thmbnails_results.stdout 
 
-  - name: check apt-cache size
+  - name: check apt-cache /var/cache/apt size
     shell: du -sh /var/cache/apt | awk '{print $1}'
     register: du_results
 
