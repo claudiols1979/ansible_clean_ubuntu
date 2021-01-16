@@ -34,7 +34,7 @@
 
   - name: debug /var/cache/apt size results
     debug:
-      msg: "{{du_results.stdout}} megabytes size"
+      msg: "{{ du_results.stdout }} megabytes size"
 
   - name: clean cache 
     shell: sudo apt-get clean -y
