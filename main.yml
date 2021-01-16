@@ -1,7 +1,7 @@
 ---
 - hosts: all
   become: True
-  gather_facts: yes
+  gather_facts: True
   tasks:
   - name: check disk size
     shell: df -h
