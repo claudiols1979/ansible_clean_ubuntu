@@ -10,6 +10,12 @@
   - name: debug disk size
     debug:
       var: disk_size.stdout
+  
+  - name: apt-get update
+    become: yes
+    become_user: root
+    apt:
+      update-cache: yes
 
   - name: remove unnecesary packages and dependencies 
     shell: sudo apt-get autoremove --purge
@@ -42,13 +48,7 @@
 
   - name: debug clean cache 
     debug:
-      var: cache_clean_results.stdout
-
-  - name: apt-get update
-    become: yes
-    become_user: root
-    apt:
-      update-cache: yes
+      var: cache_clean_results.stdout  
     
   - name: get list of pending upgrades
     command: apt-get --simulate dist-upgrade
