@@ -45,6 +45,7 @@
       var: cache_clean_results.stdout
 
   - name: apt-get update
+    become: yes
     apt:
       update-cache: yes
     
